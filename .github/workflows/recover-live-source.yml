@@ -18,7 +18,7 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p src/{css,js,bike-pace-calculator,contact,how-to-calculate-race-pace,privacy,run-walk-pace-calculator,treadmill-pace-calculator}
-          origin=https://race-pace-calculator.com
+          origin=https://pacebeacon.vercel.app
           for path in / /bike-pace-calculator/ /contact/ /how-to-calculate-race-pace/ /privacy/ /run-walk-pace-calculator/ /treadmill-pace-calculator/; do
             file="src${path}index.html"
             curl --fail --location --retry 3 --silent --show-error "$origin$path" -o "$file"
