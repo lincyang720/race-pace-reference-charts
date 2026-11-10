@@ -1,0 +1,43 @@
+name: Recover original live PaceBeacon source
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/recover-live-source.yml]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: import-vercel-pacebeacon-2026-11-10
+      - name: Download exact production responses
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p src/{css,js,bike-pace-calculator,contact,how-to-calculate-race-pace,privacy,run-walk-pace-calculator,treadmill-pace-calculator}
+          origin=https://race-pace-calculator.com
+          for path in / /bike-pace-calculator/ /contact/ /how-to-calculate-race-pace/ /privacy/ /run-walk-pace-calculator/ /treadmill-pace-calculator/; do
+            file="src${path}index.html"
+            curl --fail --location --retry 3 --silent --show-error "$origin$path" -o "$file"
+            test "$(wc -c < "$file")" -gt 1000 || { echo "Too small: $file"; exit 1; }
+            grep -qi '</html>' "$file" || { echo "Missing closing HTML: $file"; exit 1; }
+            echo "$file $(wc -c < "$file") bytes"
+          done
+          for path in /css/styles.css /js/app.js /robots.txt /sitemap.xml; do
+            curl --fail --location --retry 3 --silent --show-error "$origin$path" -o "src$path"
+          done
+          test "$(wc -c < src/css/styles.css)" -gt 3000
+          test "$(wc -c < src/js/app.js)" -gt 8000
+          grep -q '})();' src/js/app.js
+          echo 'All original pages and assets recovered'
+      - name: Commit recovered source
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src
+          git diff --cached --quiet && exit 0
+          git commit -m "Restore complete live production site source"
+          git push origin HEAD:import-vercel-pacebeacon-2026-11-10
