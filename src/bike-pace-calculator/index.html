@@ -23,4 +23,79 @@
       <a href="/treadmill-pace-calculator/">Treadmill</a>
       <a href="/bike-pace-calculator/" aria-current="page">Bike</a>
       <a href="/run-walk-pace-calculator/">Run/Walk</a>
-      <a href="ֻǱ˞
+      <a href="/how-to-calculate-race-pace/">How-to & Charts</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+
+<section class="hero">
+  <div class="eyebrow">Cycling · Speed &amp; pace</div>
+  <h1>Bike Pace Calculator</h1>
+  <p class="lede">Turn ride distance and time into average speed, or plan a finish time from a target speed. Miles or kilometers.</p>
+</section>
+<section class="panel grid-2" aria-label="Bike pace calculator">
+  <div>
+    
+    <div class="seg" role="group" aria-label="Distance units">
+      <button type="button" data-unit-btn="miles" aria-pressed="true">Miles</button>
+      <button type="button" data-unit-btn="km" aria-pressed="false">Kilometers</button>
+    </div>
+
+    <div class="seg" role="group" aria-label="Bike calculation mode">
+      <button type="button" data-bike-mode-btn="speed" aria-pressed="true">Speed from time</button>
+      <button type="button" data-bike-mode-btn="finish" aria-pressed="false">Time from speed</button>
+    </div>
+    <div class="field">
+      <label for="bike-distance">Distance (<span data-unit-label>mi</span>)</label>
+      <input id="bike-distance" type="number" min="0" step="0.01" value="25" inputmode="decimal">
+    </div>
+    <div id="bike-block-time">
+      <div class="row">
+        <div class="field"><label for="bike-hours">Hours</label><input id="bike-hours" type="number" min="0" value="1" inputmode="numeric"></div>
+        <div class="field"><label for="bike-minutes">Minutes</label><input id="bike-minutes" type="number" min="0" value="15" inputmode="numeric"></div>
+        <div class="field"><label for="bike-seconds">Seconds</label><input id="bike-seconds" type="number" min="0" value="0" inputmode="numeric"></div>
+      </div>
+    </div>
+    <div id="bike-block-speed" class="hidden">
+      <div class="field">
+        <label for="bike-speed">Target speed (<span data-unit-label>mi</span>/h)</label>
+        <input id="bike-speed" type="number" min="0" step="0.1" value="18" inputmode="decimal">
+      </div>
+    </div>
+    <p class="note">Training for a running race too? Open the <a href="/">race pace calculator</a>.</p>
+  </div>
+  <div class="results" aria-live="polite">
+    <h2>Results</h2>
+    <div class="stat"><span>Average speed</span><strong class="highlight" id="bike-out-speed">—</strong></div>
+    <div class="stat"><span>Pace</span><strong id="bike-out-pace">—</strong></div>
+    <div class="stat"><span>Finish time</span><strong id="bike-out-finish">—</strong></div>
+    <p class="note" id="bike-out-note" style="margin-top:.85rem"></p>
+  </div>
+</section>
+<section class="content">
+  <h2>Bike pace vs running pace</h2>
+  <p>Cyclists usually talk in mph or km/h; runners use min/mile. This bike pace calculator shows both so you can compare endurance sessions. For foot-race planning, use the homepage <a href="/">race pace calculator</a>.</p>
+</section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <strong style="color:var(--text)">PaceBeacon</strong>
+      <p style="margin:.35rem 0 0">Free race pace tools that run in your browser. No signup.</p>
+    </div>
+    <nav aria-label="Footer">
+      <a href="/">race pace calculator</a>
+      <a href="/treadmill-pace-calculator/">treadmill pace calculator</a>
+      <a href="/bike-pace-calculator/">bike pace calculator</a>
+      <a href="/run-walk-pace-calculator/">run walk pace calculator</a>
+      <a href="/how-to-calculate-race-pace/">how to calculate race pace</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+  </div>
+</footer>
+<script src="/js/app.js" defer></script>
+</body>
+</html>

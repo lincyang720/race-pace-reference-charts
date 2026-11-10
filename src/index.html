@@ -13,4 +13,154 @@
 <meta property="og:url" content="https://race-pace-calculator.com/">
 <meta name="theme-color" content="#071018">
 <link rel="stylesheet" href="/css/styles.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Race Pace Calculator", "url": "https://race-pace-calculator.com/", "applicationCategory": "HealthApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Free race pace calculator for 5K, 10K, half marathon, and marathon. Convert distance and time to pace, finish time, or distance.", "publisher": {"@type": ֻǱ˞
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Race Pace Calculator", "url": "https://race-pace-calculator.com/", "applicationCategory": "HealthApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Free race pace calculator for 5K, 10K, half marathon, and marathon. Convert distance and time to pace, finish time, or distance.", "publisher": {"@type": "Organization", "name": "PaceBeacon", "url": "https://race-pace-calculator.com/"}}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is this the same as a generic pace calculator?", "acceptedAnswer": {"@type": "Answer", "text": "This tool is built for race distances and finish planning. The homepage targets race pace calculator use cases (presets, splits, mile/km). For treadmill incline, cycling speed, or Jeff Galloway-style run/walk, use the linked tools."}}, {"@type": "Question", "name": "Do you store my numbers?", "acceptedAnswer": {"@type": "Answer", "text": "No. Calculations run entirely in your browser. See the Privacy page."}}, {"@type": "Question", "name": "Miles or kilometers?", "acceptedAnswer": {"@type": "Answer", "text": "Use the Miles / Kilometers toggle. Pace and speed labels update automatically, and you can see the equivalent pace in the other unit."}}]}]}</script>
+</head>
+<body data-page="home" data-unit="miles" data-calc-mode="pace" data-bike-mode="speed">
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="logo" href="/"><span class="logo-mark" aria-hidden="true"></span>PaceBeacon</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/" aria-current="page">Race Pace</a>
+      <a href="/treadmill-pace-calculator/">Treadmill</a>
+      <a href="/bike-pace-calculator/">Bike</a>
+      <a href="/run-walk-pace-calculator/">Run/Walk</a>
+      <a href="/how-to-calculate-race-pace/">How-to & Charts</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+
+<section class="hero">
+  <div class="eyebrow">Free · Instant · No signup</div>
+  <h1>Race Pace Calculator</h1>
+  <p class="lede">Find your race pace, finish time, or distance in seconds. Switch between miles and kilometers, use 5K–marathon presets, and see split estimates—all in your browser.</p>
+</section>
+
+<section class="panel grid-2" aria-label="Race pace calculator">
+  <div>
+    
+    <div class="seg" role="group" aria-label="Distance units">
+      <button type="button" data-unit-btn="miles" aria-pressed="true">Miles</button>
+      <button type="button" data-unit-btn="km" aria-pressed="false">Kilometers</button>
+    </div>
+
+    <div class="seg" role="group" aria-label="What to calculate">
+      <button type="button" data-mode-btn="pace" aria-pressed="true">Pace</button>
+      <button type="button" data-mode-btn="finish" aria-pressed="false">Finish time</button>
+      <button type="button" data-mode-btn="distance" aria-pressed="false">Distance</button>
+    </div>
+    <div class="preset-row" aria-label="Race distance presets">
+      <button type="button" data-preset="mile">1 mile</button>
+      <button type="button" data-preset="5k">5K</button>
+      <button type="button" data-preset="10k">10K</button>
+      <button type="button" data-preset="half">Half</button>
+      <button type="button" data-preset="marathon">Marathon</button>
+      <button type="button" data-preset="custom">Custom</button>
+    </div>
+    <div id="block-distance" class="field">
+      <label for="distance">Distance (<span data-unit-label>mi</span>)</label>
+      <input id="distance" type="number" min="0" step="0.001" value="3.107" inputmode="decimal">
+    </div>
+    <div id="block-time">
+      <div class="row">
+        <div class="field">
+          <label for="hours">Hours</label>
+          <input id="hours" type="number" min="0" step="1" value="0" inputmode="numeric">
+        </div>
+        <div class="field">
+          <label for="minutes">Minutes</label>
+          <input id="minutes" type="number" min="0" step="1" value="28" inputmode="numeric">
+        </div>
+        <div class="field">
+          <label for="seconds">Seconds</label>
+          <input id="seconds" type="number" min="0" step="1" value="0" inputmode="numeric">
+        </div>
+      </div>
+    </div>
+    <div id="block-pace" class="hidden">
+      <div class="row-2">
+        <div class="field">
+          <label for="pace-min">Pace minutes</label>
+          <input id="pace-min" type="number" min="0" step="1" value="9" inputmode="numeric">
+        </div>
+        <div class="field">
+          <label for="pace-sec">Pace seconds</label>
+          <input id="pace-sec" type="number" min="0" max="59" step="1" value="0" inputmode="numeric">
+        </div>
+      </div>
+      <p class="note">Pace per <span data-unit-label>mi</span>.</p>
+    </div>
+    <div class="actions">
+      <button class="btn primary" id="calc-btn" type="button">Calculate race pace</button>
+      <button class="btn ghost" id="reset-btn" type="button">Reset</button>
+    </div>
+    <p class="note" style="margin-top:0.9rem">Runs locally in your browser. Nothing is uploaded.</p>
+  </div>
+  <div class="results" aria-live="polite">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:.5rem;margin-bottom:.4rem">
+      <h2>Results</h2>
+      <span class="pill ok">Live</span>
+    </div>
+    <div class="stat"><span>Pace</span><strong class="highlight" id="out-pace">—</strong></div>
+    <div class="stat"><span>Finish time</span><strong id="out-finish">—</strong></div>
+    <div class="stat"><span>Distance</span><strong id="out-distance">—</strong></div>
+    <div class="stat"><span>Average speed</span><strong id="out-speed">—</strong></div>
+    <div class="stat"><span>Other unit pace</span><strong id="out-equiv">—</strong></div>
+    <p class="note" id="out-note" style="margin-top:.85rem"></p>
+    <h2 style="margin-top:1.1rem">Split &amp; race times</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Segment</th><th>Time at this pace</th></tr></thead>
+        <tbody id="splits-body"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="content">
+  <h2>More pace tools</h2>
+  <div class="card-grid">
+    <a class="card" href="/treadmill-pace-calculator/"><strong>Treadmill pace calculator</strong><span>Convert belt pace and incline into outdoor-equivalent effort.</span></a>
+    <a class="card" href="/bike-pace-calculator/"><strong>Bike pace calculator</strong><span>Turn ride distance and time into average speed and pace.</span></a>
+    <a class="card" href="/run-walk-pace-calculator/"><strong>Run walk pace calculator</strong><span>Estimate finish time from run/walk intervals.</span></a>
+    <a class="card" href="/how-to-calculate-race-pace/"><strong>How to calculate race pace</strong><span>Formulas, 5K–marathon charts, and training tips.</span></a>
+  </div>
+
+  <h2>How this race pace calculator works</h2>
+  <p>Pace is finish time divided by distance. Enter a race distance (or tap 5K, 10K, half marathon, marathon) and your goal or actual finish time to get minutes per mile or per kilometer. Flip the mode to solve for finish time from a target pace, or for distance from time and pace.</p>
+  <h3>Useful race distances</h3>
+  <ul>
+    <li><strong>5K</strong> — 3.10686 miles / 5 kilometers</li>
+    <li><strong>10K</strong> — 6.21371 miles / 10 kilometers</li>
+    <li><strong>Half marathon</strong> — 13.1094 miles / 21.0975 km</li>
+    <li><strong>Marathon</strong> — 26.2188 miles / 42.195 km</li>
+  </ul>
+  <h3>FAQ</h3>
+  <div class="faq">
+    <details><summary>Is this the same as a generic pace calculator?</summary><p>This tool is built for race distances and finish planning. The homepage targets <strong>race pace calculator</strong> use cases (presets, splits, mile/km). For treadmill incline, cycling speed, or Jeff Galloway–style run/walk, use the linked tools.</p></details>
+    <details><summary>Do you store my numbers?</summary><p>No. Calculations run entirely in your browser. See <a href="/privacy/">Privacy</a>.</p></details>
+    <details><summary>Miles or kilometers?</summary><p>Use the Miles / Kilometers toggle. Pace and speed labels update automatically, and you can see the equivalent pace in the other unit.</p></details>
+  </div>
+</section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <strong style="color:var(--text)">PaceBeacon</strong>
+      <p style="margin:.35rem 0 0">Free race pace tools that run in your browser. No signup.</p>
+    </div>
+    <nav aria-label="Footer">
+      <a href="/">race pace calculator</a>
+      <a href="/treadmill-pace-calculator/">treadmill pace calculator</a>
+      <a href="/bike-pace-calculator/">bike pace calculator</a>
+      <a href="/run-walk-pace-calculator/">run walk pace calculator</a>
+      <a href="/how-to-calculate-race-pace/">how to calculate race pace</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+  </div>
+</footer>
+<script src="/js/app.js" defer></script>
+</body>
+</html>

@@ -30,17 +30,17 @@
   }
 
   function formatHMS(totalSeconds) {
-    if (!isFinite(totalSeconds) || totalSeconds &lt; 0) return "—";
+    if (!isFinite(totalSeconds) || totalSeconds < 0) return "—";
     totalSeconds = Math.round(totalSeconds);
     var h = Math.floor(totalSeconds / 3600);
     var m = Math.floor((totalSeconds % 3600) / 60);
     var s = totalSeconds % 60;
-    if (h &gt; 0) return h + ":" + pad2(m) + ":" + pad2(s);
+    if (h > 0) return h + ":" + pad2(m) + ":" + pad2(s);
     return m + ":" + pad2(s);
   }
 
   function formatPace(secondsPerUnit) {
-    if (!isFinite(secondsPerUnit) || secondsPerUnit &lt;= 0) return "—";
+    if (!isFinite(secondsPerUnit) || secondsPerUnit <= 0) return "—";
     return formatHMS(secondsPerUnit);
   }
 
@@ -62,9 +62,9 @@
       el.textContent = u === "km" ? "km" : "mi";
     });
     var dist = $("distance");
-    if (dist &amp;&amp; dist.dataset.lastUnit &amp;&amp; dist.dataset.lastUnit !== u) {
+    if (dist && dist.dataset.lastUnit && dist.dataset.lastUnit !== u) {
       var v = parseFloat(dist.value);
-      if (isFinite(v) &amp;&amp; v &gt; 0) {
+      if (isFinite(v) && v > 0) {
         dist.value = u === "km" ? (v * KM_PER_MILE).toFixed(3) : (v / KM_PER_MILE).toFixed(3);
       }
     }
@@ -87,11 +87,11 @@
     var distBlock = $("block-distance");
     var timeBlock = $("block-time");
     var paceBlock = $("block-pace");
-    if (distBlock) distBlock.classList.toggle("hidden", !showDistance &amp;&amp; mode === "distance");
+    if (distBlock) distBlock.classList.toggle("hidden", !showDistance && mode === "distance");
     // Always show two of three inputs based on mode:
-    // pace mode: distance + time -&gt; pace
-    // finish mode: distance + pace -&gt; time
-    // distance mode: time + pace -&gt; distance
+    // pace mode: distance + time -> pace
+    // finish mode: distance + pace -> time
+    // distance mode: time + pace -> distance
     if (distBlock) distBlock.classList.toggle("hidden", mode === "distance");
     if (timeBlock) timeBlock.classList.toggle("hidden", mode === "finish");
     if (paceBlock) paceBlock.classList.toggle("hidden", mode === "pace");
@@ -113,7 +113,7 @@
   }
 
   function calc() {
-    if (!$("out-pace") &amp;&amp; !$("out-primary")) return;
+    if (!$("out-pace") && !$("out-primary")) return;
     var mode = getMode();
     var unit = getUnit();
     var distance = Math.max(0, num("distance", 0));
@@ -123,7 +123,7 @@
     var pace, finish, distOut, note;
 
     if (mode === "pace") {
-      if (distance &lt;= 0 || timeSec &lt;= 0) {
+      if (distance <= 0 || timeSec <= 0) {
         renderEmpty("Enter distance and finish time.");
         return;
       }
@@ -132,7 +132,7 @@
       distOut = distance;
       note = "Pace from distance ÷ time.";
     } else if (mode === "finish") {
-      if (distance &lt;= 0 || paceSec &lt;= 0) {
+      if (distance <= 0 || paceSec <= 0) {
         renderEmpty("Enter distance and target pace.");
         return;
       }
@@ -141,7 +141,7 @@
       distOut = distance;
       note = "Finish time from pace × distance.";
     } else {
-      if (timeSec &lt;= 0 || paceSec &lt;= 0) {
+      if (timeSec <= 0 || paceSec <= 0) {
         renderEmpty("Enter time and pace.");
         return;
       }
@@ -154,13 +154,13 @@
     }
 
     var label = unit === "km" ? "/km" : "/mi";
-    var speed = pace &gt; 0 ? (unit === "km" ? 3600 / pace : 3600 / pace) : 0;
+    var speed = pace > 0 ? (unit === "km" ? 3600 / pace : 3600 / pace) : 0;
     var speedLabel = unit === "km" ? "km/h" : "mph";
 
     setText("out-pace", formatPace(pace) + " " + label);
     setText("out-finish", formatHMS(finish));
     setText("out-distance", (isFinite(distOut) ? distOut.toFixed(3) : "—") + " " + (unit === "km" ? "km" : "mi"));
-    setText("out-speed", speed &gt; 0 ? speed.toFixed(2) + " " + speedLabel : "—");
+    setText("out-speed", speed > 0 ? speed.toFixed(2) + " " + speedLabel : "—");
     setText("out-primary", formatPace(pace) + " " + label);
     setText("out-note", note);
 
@@ -182,13 +182,13 @@
 
   function renderSplits(pacePerUnit, unit) {
     var body = $("splits-body");
-    if (!body || !isFinite(pacePerUnit) || pacePerUnit &lt;= 0) return;
+    if (!body || !isFinite(pacePerUnit) || pacePerUnit <= 0) return;
     var rows = [];
     var maxUnits = unit === "km" ? 42 : 26;
     var step = 1;
     var limit = Math.min(maxUnits, 10);
     // show first 5 + half + marathon markers via race presets instead
-    for (var i = 1; i &lt;= 5; i++) {
+    for (var i = 1; i <= 5; i++) {
       rows.push({ label: i + " " + (unit === "km" ? "km" : "mi"), sec: pacePerUnit * i });
     }
     var races = [
@@ -208,7 +208,7 @@
 
   function renderEquivalent(pacePerUnit, unit) {
     var el = $("out-equiv");
-    if (!el || !isFinite(pacePerUnit) || pacePerUnit &lt;= 0) return;
+    if (!el || !isFinite(pacePerUnit) || pacePerUnit <= 0) return;
     // convert pace to the other unit
     if (unit === "miles") {
       var perKm = pacePerUnit / KM_PER_MILE;
@@ -226,7 +226,7 @@
     var paceSec = parseHMS(0, num("tm-pace-min", 0), num("tm-pace-sec", 0));
     var incline = Math.max(0, num("tm-incline", 0));
     var distance = Math.max(0, num("tm-distance", 0));
-    if (paceSec &lt;= 0) {
+    if (paceSec <= 0) {
       setText("tm-out-pace", "—");
       setText("tm-out-effort", "—");
       setText("tm-out-finish", "—");
@@ -236,14 +236,14 @@
     // Rough outdoor-equivalent: each 1% incline adds ~12 sec/km or ~20 sec/mi of effort
     var addPer = unit === "km" ? 12 : 20;
     var effortPace = paceSec + incline * addPer;
-    var finish = distance &gt; 0 ? paceSec * distance : 0;
+    var finish = distance > 0 ? paceSec * distance : 0;
     setText("tm-out-pace", formatPace(paceSec) + (unit === "km" ? " /km" : " /mi"));
     setText("tm-out-effort", formatPace(effortPace) + (unit === "km" ? " /km equiv." : " /mi equiv."));
-    setText("tm-out-finish", distance &gt; 0 ? formatHMS(finish) : "—");
+    setText("tm-out-finish", distance > 0 ? formatHMS(finish) : "—");
     setText("tm-out-note", "Rule of thumb only: ~" + addPer + "s per " + (unit === "km" ? "km" : "mi") + " added per 1% incline for outdoor-equivalent effort.");
   }
 
-  // Bike pace: distance + time -&gt; speed (mph/kph) and pace
+  // Bike pace: distance + time -> speed (mph/kph) and pace
   function calcBike() {
     if (!$("bike-out-speed")) return;
     var unit = getUnit();
@@ -252,7 +252,7 @@
     var speedIn = num("bike-speed", 0);
     var mode = document.body.getAttribute("data-bike-mode") || "speed";
     if (mode === "speed") {
-      if (distance &lt;= 0 || timeSec &lt;= 0) {
+      if (distance <= 0 || timeSec <= 0) {
         setText("bike-out-speed", "—");
         setText("bike-out-pace", "—");
         setText("bike-out-finish", "—");
@@ -266,7 +266,7 @@
       setText("bike-out-finish", formatHMS(timeSec));
       setText("bike-out-note", "Average speed from distance ÷ time.");
     } else {
-      if (distance &lt;= 0 || speedIn &lt;= 0) {
+      if (distance <= 0 || speedIn <= 0) {
         setText("bike-out-speed", "—");
         setText("bike-out-pace", "—");
         setText("bike-out-finish", "—");
@@ -291,7 +291,7 @@
     var walkMin = Math.max(0, num("rw-walk-min", 0));
     var runPace = parseHMS(0, num("rw-run-pace-min", 0), num("rw-run-pace-sec", 0));
     var walkPace = parseHMS(0, num("rw-walk-pace-min", 0), num("rw-walk-pace-sec", 0));
-    if (distance &lt;= 0 || (runMin + walkMin) &lt;= 0 || runPace &lt;= 0 || walkPace &lt;= 0) {
+    if (distance <= 0 || (runMin + walkMin) <= 0 || runPace <= 0 || walkPace <= 0) {
       setText("rw-out-pace", "—");
       setText("rw-out-finish", "—");
       setText("rw-out-note", "Enter distance, run/walk intervals, and paces.");
@@ -362,7 +362,7 @@
 
     // init
     var dist = $("distance");
-    if (dist &amp;&amp; !dist.dataset.lastUnit) dist.dataset.lastUnit = getUnit();
+    if (dist && !dist.dataset.lastUnit) dist.dataset.lastUnit = getUnit();
     if (document.body.getAttribute("data-page") === "home") {
       setMode(getMode());
       calc();
