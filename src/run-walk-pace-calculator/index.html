@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Run Walk Pace Calculator — Interval Average Pace | PaceBeacon</title>
+<meta name="description" content="Free run walk pace calculator. Estimate average pace and finish time from run/walk intervals and segment paces.">
+<link rel="canonical" href="https://race-pace-calculator.com/run-walk-pace-calculator/">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Run Walk Pace Calculator — Interval Average Pace | PaceBeacon">
+<meta property="og:description" content="Free run walk pace calculator. Estimate average pace and finish time from run/walk intervals and segment paces.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://race-pace-calculator.com/run-walk-pace-calculator/">
+<meta name="theme-color" content="#071018">
+<link rel="stylesheet" href="/css/styles.css">
+</head>
+<body data-page="runwalk" data-unit="miles" data-calc-mode="pace" data-bike-mode="speed">
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="logo" href="/"><span class="logo-mark" aria-hidden="true"></span>PaceBeacon</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/">Race Pace</a>
+      <a href="/treadmill-pace-calculator/">Treadmill</a>
+      <a href="/bike-pace-calculator/">Bike</a>
+      <a href="/run-walk-pace-calculator/" aria-current="page">Run/Walk</a>
+      <a href="/how-to-calculate-race-pace/">How-to & Charts</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+
+<section class="hero">
+  <div class="eyebrow">Run / walk intervals</div>
+  <h1>Run Walk Pace Calculator</h1>
+  <p class="lede">Estimate average pace and finish time from run and walk interval minutes plus each segment’s pace—useful for Galloway-style plans.</p>
+</section>
+<section class="panel grid-2" aria-label="Run walk pace calculator">
+  <div>
+    
+    <div class="seg" role="group" aria-label="Distance units">
+      <button type="button" data-unit-btn="miles" aria-pressed="true">Miles</button>
+      <button type="button" data-unit-btn="km" aria-pressed="false">Kilometers</button>
+    </div>
+
+    <div class="field">
+      <label for="rw-distance">Race or workout distance (<span data-unit-label>mi</span>)</label>
+      <input id="rw-distance" type="number" min="0" step="0.01" value="13.1" inputmode="decimal">
+    </div>
+    <div class="row-2">
+      <div class="field"><label for="rw-run-min">Run minutes</label><input id="rw-run-min" type="number" min="0" step="0.5" value="3" inputmode="decimal"></div>
+      <div class="field"><label for="rw-walk-min">Walk minutes</label><input id="rw-walk-min" type="number" min="0" step="0.5" value="1" inputmode="decimal"></div>
+    </div>
+    <div class="row-2">
+      <div class="field"><label for="rw-run-pace-min">Run pace min</label><input id="rw-run-pace-min" type="number" min="0" value="10" inputmode="numeric"></div>
+      <div class="field"><label for="rw-run-pace-sec">Run pace sec</label><input id="rw-run-pace-sec" type="number" min="0" max="59" value="0" inputmode="numeric"></div>
+    </div>
+    <div class="row-2">
+      <div class="field"><label for="rw-walk-pace-min">Walk pace min</label><input id="rw-walk-pace-min" type="number" min="0" value="15" inputmode="numeric"></div>
+      <div class="field"><label for="rw-walk-pace-sec">Walk pace sec</label><input id="rw-walk-pace-sec" type="number" min="0" max="59" value="0" inputmode="numeric"></div>
+    </div>
+    <p class="note">Compare with continuous pacing on the <a href="/">race pace calculator</a>.</p>
+  </div>
+  <div class="results" aria-live="polite">
+    <h2>Results</h2>
+    <div class="stat"><span>Average pace</span><strong class="highlight" id="rw-out-pace">—</strong></div>
+    <div class="stat"><span>Estimated finish</span><strong id="rw-out-finish">—</strong></div>
+    <div class="stat"><span>Interval mix</span><strong id="rw-out-run-share">—</strong></div>
+    <p class="note" id="rw-out-note" style="margin-top:.85rem"></p>
+  </div>
+</section>
+<section class="content">
+  <h2>How run/walk averaging works</h2>
+  <p>Average pace weights your run and walk paces by the share of minutes in each interval. Example: 3 minutes run + 1 minute walk means 75% of time at run pace and 25% at walk pace. Pair this with the <a href="/how-to-calculate-race-pace/">how to calculate race pace</a> charts when setting goals.</p>
+</section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <strong style="color:var(--text)">PaceBeacon</strong>
+      <p style="margin:.35rem 0 0">Free race pace tools that run in your browser. No signup.</p>
+    </div>
+    <nav aria-label="Footer">
+      <a href="/">race pace calculator</a>
+      <a href="/treadmill-pace-calculator/">treadmill pace calculator</a>
+      <a href="/bike-pace-calculator/">bike pace calculator</a>
+      <a href="/run-walk-pace-calculator/">run walk pace calculator</a>
+      <a href="/how-to-calculate-race-pace/">how to calculate race pace</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+  </div>
+</footer>
+<script src="/js/app.js" defer></script>
+</body>
+</html>
