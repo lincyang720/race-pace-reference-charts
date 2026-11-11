@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Treadmill Pace Calculator — Incline Effort Estimate | PaceBeacon</title>
+<meta name="description" content="Free treadmill pace calculator. Convert belt pace and incline into outdoor-equivalent effort and finish time. Miles or kilometers.">
+<link rel="canonical" href="https://race-pace-calculator.com/treadmill-pace-calculator/">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Treadmill Pace Calculator — Incline Effort Estimate | PaceBeacon">
+<meta property="og:description" content="Free treadmill pace calculator. Convert belt pace and incline into outdoor-equivalent effort and finish time. Miles or kilometers.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://race-pace-calculator.com/treadmill-pace-calculator/">
+<meta name="theme-color" content="#071018">
+<link rel="stylesheet" href="/css/styles.css">
+</head>
+<body data-page="treadmill" data-unit="miles" data-calc-mode="pace" data-bike-mode="speed">
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="logo" href="/"><span class="logo-mark" aria-hidden="true"></span>PaceBeacon</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/">Race Pace</a>
+      <a href="/treadmill-pace-calculator/" aria-current="page">Treadmill</a>
+      <a href="/bike-pace-calculator/">Bike</a>
+      <a href="/run-walk-pace-calculator/">Run/Walk</a>
+      <a href="/how-to-calculate-race-pace/">How-to & Charts</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+
+<section class="hero">
+  <div class="eyebrow">Treadmill · Incline aware</div>
+  <h1>Treadmill Pace Calculator</h1>
+  <p class="lede">Convert treadmill belt pace and incline into an outdoor-equivalent effort estimate, plus finish time for a chosen distance.</p>
+</section>
+<section class="panel grid-2" aria-label="Treadmill pace calculator">
+  <div>
+    
+    <div class="seg" role="group" aria-label="Distance units">
+      <button type="button" data-unit-btn="miles" aria-pressed="true">Miles</button>
+      <button type="button" data-unit-btn="km" aria-pressed="false">Kilometers</button>
+    </div>
+
+    <div class="row-2">
+      <div class="field">
+        <label for="tm-pace-min">Belt pace minutes</label>
+        <input id="tm-pace-min" type="number" min="0" value="9" inputmode="numeric">
+      </div>
+      <div class="field">
+        <label for="tm-pace-sec">Belt pace seconds</label>
+        <input id="tm-pace-sec" type="number" min="0" max="59" value="30" inputmode="numeric">
+      </div>
+    </div>
+    <div class="row-2">
+      <div class="field">
+        <label for="tm-incline">Incline (%)</label>
+        <input id="tm-incline" type="number" min="0" step="0.5" value="1" inputmode="decimal">
+      </div>
+      <div class="field">
+        <label for="tm-distance">Distance (<span data-unit-label>mi</span>)</label>
+        <input id="tm-distance" type="number" min="0" step="0.01" value="3.107" inputmode="decimal">
+      </div>
+    </div>
+    <p class="note">Need road race splits instead? Use the free <a href="/">race pace calculator</a>.</p>
+  </div>
+  <div class="results" aria-live="polite">
+    <h2>Results</h2>
+    <div class="stat"><span>Belt pace</span><strong id="tm-out-pace">—</strong></div>
+    <div class="stat"><span>Outdoor-equivalent effort</span><strong class="highlight" id="tm-out-effort">—</strong></div>
+    <div class="stat"><span>Finish at belt pace</span><strong id="tm-out-finish">—</strong></div>
+    <p class="note" id="tm-out-note" style="margin-top:.85rem"></p>
+  </div>
+</section>
+<section class="content">
+  <h2>About treadmill pace</h2>
+  <p>A common coaching rule of thumb adds roughly 15–20 seconds per mile (about 12 seconds per km) of effort for each 1% of incline versus flat outdoor running. This page applies that estimate so you can compare treadmill sessions with race goals from the <a href="/">race pace calculator</a>.</p>
+  <p>Also see the <a href="/run-walk-pace-calculator/">run walk pace calculator</a> for interval training on a belt.</p>
+</section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <strong style="color:var(--text)">PaceBeacon</strong>
+      <p style="margin:.35rem 0 0">Free race pace tools that run in your browser. No signup.</p>
+    </div>
+    <nav aria-label="Footer">
+      <a href="/">race pace calculator</a>
+      <a href="/treadmill-pace-calculator/">treadmill pace calculator</a>
+      <a href="/bike-pace-calculator/">bike pace calculator</a>
+      <a href="/run-walk-pace-calculator/">run walk pace calculator</a>
+      <a href="/how-to-calculate-race-pace/">how to calculate race pace</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+  </div>
+</footer>
+<script src="/js/app.js" defer></script>
+</body>
+</html>
