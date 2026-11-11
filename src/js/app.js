@@ -61,6 +61,35 @@
     document.querySelectorAll("[data-unit-label]").forEach(function (el) {
       el.textContent = u === "km" ? "km" : "mi";
     });
+    // Keep physical distances and input paces consistent when changing units.
+    ["tm-distance", "bike-distance", "rw-distance"].forEach(function (id) {
+      var el = $(id);
+      if (!el) return;
+      var previousUnit = el.dataset.lastUnit || "miles";
+      var value = parseFloat(el.value);
+      if (previousUnit !== u && isFinite(value) && value >= 0) {
+        el.value = (u === "km" ? value * KM_PER_MILE : value / KM_PER_MILE).toFixed(3);
+      }
+      el.dataset.lastUnit = u;
+    });
+    ["pace-min", "pace-sec", "tm-pace-min", "tm-pace-sec", "rw-run-pace-min", "rw-run-pace-sec", "rw-walk-pace-min", "rw-walk-pace-sec"].forEach(function (id) {
+      var el = $(id);
+      if (el && !el.dataset.lastUnit) el.dataset.lastUnit = "miles";
+    });
+    [["pace-min", "pace-sec"], ["tm-pace-min", "tm-pace-sec"], ["rw-run-pace-min", "rw-run-pace-sec"], ["rw-walk-pace-min", "rw-walk-pace-sec"]].forEach(function (pair) {
+      var min = $(pair[0]), sec = $(pair[1]);
+      if (!min || !sec) return;
+      if (min.dataset.lastUnit !== u) {
+        var pace = parseHMS(0, num(pair[0], 0), num(pair[1], 0));
+        if (pace > 0) {
+          var converted = Math.round(u === "km" ? pace / KM_PER_MILE : pace * KM_PER_MILE);
+          min.value = Math.floor(converted / 60);
+          sec.value = converted % 60;
+        }
+      }
+      min.dataset.lastUnit = u;
+      sec.dataset.lastUnit = u;
+    });
     var dist = $("distance");
     if (dist && dist.dataset.lastUnit && dist.dataset.lastUnit !== u) {
       var v = parseFloat(dist.value);
@@ -154,7 +183,7 @@
     }
 
     var label = unit === "km" ? "/km" : "/mi";
-    var speed = pace > 0 ? (unit === "km" ? 3600 / pace : 3600 / pace) : 0;
+    var speed = pace > 0 ? 3600 / pace : 0;
     var speedLabel = unit === "km" ? "km/h" : "mph";
 
     setText("out-pace", formatPace(pace) + " " + label);
@@ -300,12 +329,13 @@
     var cycle = runMin + walkMin;
     var runFrac = runMin / cycle;
     var walkFrac = walkMin / cycle;
-    var avgPace = runPace * runFrac + walkPace * walkFrac;
+    // Intervals are time-weighted: distance covered = runTime/runPace + walkTime/walkPace.
+    var avgPace = cycle / (runMin / runPace + walkMin / walkPace);
     var finish = avgPace * distance;
     setText("rw-out-pace", formatPace(avgPace) + (unit === "km" ? " /km" : " /mi"));
     setText("rw-out-finish", formatHMS(finish));
     setText("rw-out-run-share", Math.round(runFrac * 100) + "% run / " + Math.round(walkFrac * 100) + "% walk");
-    setText("rw-out-note", "Average pace weights run and walk segments by interval minutes.");
+    setText("rw-out-note", "Average pace uses total interval time divided by distance covered.");
   }
 
   function bind() {
