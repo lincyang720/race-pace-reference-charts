@@ -1,0 +1,6 @@
+race,metres,kilometres,miles,source
+Road mile,1609.344,1.609344,1,World Athletics Technical Rule 55 (Road Mile 1609.344m); NIST HB44 App. C
+5K,5000,5,3.10686,World Athletics Technical Rule 55 (5km)
+10K,10000,10,6.21371,World Athletics Technical Rule 55 (10km)
+Half marathon,21097.5,21.0975,13.10938,Half of the 42.195km marathon (World Athletics Technical Rule 55)
+Marathon,42195,42.195,26.21876,World Athletics Technical Rule 55 (Marathon 42.195km)
