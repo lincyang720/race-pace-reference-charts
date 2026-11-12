@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marathon Pace Chart — Mile and 5K Splits | PaceBeacon</title>
+<meta name="description" content="Marathon checkpoint times for goals from 3:00 to 5:30, with mile and 5K charts you can download as CSV.">
+<link rel="canonical" href="https://race-pace-calculator.com/marathon-pace-chart/">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Marathon Pace Chart — Mile and 5K Splits | PaceBeacon">
+<meta property="og:description" content="Marathon checkpoint times for goals from 3:00 to 5:30, with mile and 5K charts you can download as CSV.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://race-pace-calculator.com/marathon-pace-chart/">
+<meta name="theme-color" content="#071018">
+<link rel="stylesheet" href="/css/styles.css">
+</head>
+<body data-page="marathon-chart" data-unit="miles" data-calc-mode="pace" data-bike-mode="speed">
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="logo" href="/"><span class="logo-mark" aria-hidden="true"></span>PaceBeacon</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/">Race Pace</a>
+      <a href="/marathon-pace-calculator/">Marathon Pace</a>
+      <a href="/marathon-pace-chart/">Marathon Chart</a>
+      <a href="/treadmill-pace-calculator/">Treadmill</a>
+      <a href="/bike-pace-calculator/">Bike</a>
+      <a href="/run-walk-pace-calculator/">Run/Walk</a>
+      <a href="/how-to-calculate-race-pace/">How-to & Charts</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap" id="pace-chart">
+<section class="hero"><h1>Marathon Pace Chart</h1></section>
+<section class="panel" aria-label="Marathon checkpoint times">
+  <div class="seg" role="group" aria-label="Checkpoint units">
+    <button type="button" data-unit-btn="miles" aria-pressed="true">Miles</button>
+    <button type="button" data-unit-btn="km" aria-pressed="false">Kilometers</button>
+  </div>
+  <div id="chart-miles">
+    <div class="table-wrap" tabindex="0" role="region" aria-label="Mile checkpoint times">
+      <table style="min-width:64rem;white-space:nowrap"><thead><tr id="chart-head-miles"></tr></thead><tbody id="chart-body-miles"></tbody></table>
+    </div>
+    <button type="button" class="btn" id="chart-csv-miles">Download CSV</button>
+  </div>
+  <div id="chart-km" hidden>
+    <div class="table-wrap" tabindex="0" role="region" aria-label="5 km checkpoint times">
+      <table style="min-width:64rem;white-space:nowrap"><thead><tr id="chart-head-km"></tr></thead><tbody id="chart-body-km"></tbody></table>
+    </div>
+    <button type="button" class="btn" id="chart-csv-km">Download CSV</button>
+  </div>
+</section>
+<section class="content">
+  <h2>Pace conversion examples</h2>
+  <ul>
+    <li>4:00 per kilometer ≈ 6:26 per mile ≈ 15.00 km/h (9.32 mph).</li>
+    <li>5:00 per kilometer ≈ 8:03 per mile ≈ 12.00 km/h (7.46 mph).</li>
+    <li>6:00 per kilometer ≈ 9:39 per mile ≈ 10.00 km/h (6.21 mph).</li>
+  </ul>
+  <h2>Limits of the marathon pace table</h2>
+  <ul>
+    <li><strong>Grade:</strong> Flat-pace targets can be optimistic on uphills and conservative on runnable downhills.</li>
+    <li><strong>Elevation gain:</strong> Repeated climbs can make the total effort implied by a flat pace too optimistic, even if the course finishes at its starting elevation.</li>
+    <li><strong>Fatigue:</strong> If you slow late in the race, the steady-pace checkpoints can be optimistic.</li>
+    <li><strong>Weather:</strong> Heat or a headwind can make the plan optimistic; a helpful tailwind can make it conservative.</li>
+    <li><strong>Running tangents:</strong> Wide turns or weaving add distance, so the predicted time at the planned pace can be optimistic.</li>
+  </ul>
+  <h2>Dated marathon results</h2>
+  <p>Historical elite race results for context.</p>
+  <ul>
+    <li>October 8, 2023 · Chicago Marathon · Kelvin Kiptum · 2:00:35.</li>
+    <li>September 25, 2022 · Berlin Marathon · Eliud Kipchoge · 2:01:09.</li>
+  </ul>
+  <p><a href="https://worldathletics.org/news/press-releases/ratified-world-marathon-record-kelvin-kiptum">Source: World Athletics</a></p>
+  <h2>FAQ</h2>
+  <details><summary>How do I read this marathon split chart?</summary><p>Find your goal time across the top. Follow that column down for the elapsed time from the start at each checkpoint.</p></details>
+  <details><summary>How do I download the chart?</summary><p>Choose Miles or Kilometers, then select Download CSV to export all checkpoints and goal columns for that view.</p></details>
+  <details><summary>Why doesn't the chart predict my personal finish time?</summary><p>Each column assumes a steady pace for a finish time you choose. Your race will depend on fitness, course and conditions. For a goal between columns, use the <a href="/marathon-pace-calculator/">marathon pace calculator</a>.</p></details>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <strong style="color:var(--text)">PaceBeacon</strong>
+      <p style="margin:.35rem 0 0">Free race pace tools that run in your browser. No signup.</p>
+    </div>
+    <nav aria-label="Footer">
+      <a href="/">race pace calculator</a>
+      <a href="/marathon-pace-calculator/">marathon pace calculator</a>
+      <a href="/treadmill-pace-calculator/">treadmill pace calculator</a>
+      <a href="/bike-pace-calculator/">bike pace calculator</a>
+      <a href="/run-walk-pace-calculator/">run walk pace calculator</a>
+      <a href="/how-to-calculate-race-pace/">how to calculate race pace</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+  </div>
+</footer>
+<script src="/js/app.js" defer></script>
+</body>
+</html>

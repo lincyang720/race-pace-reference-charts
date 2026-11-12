@@ -339,6 +339,76 @@
   }
 
 
+  function checkpoints(distance, step, label, seconds) {
+    var rows = [];
+    for (var i = 1; i * step < distance - 1e-8; i++) {
+      rows.push([i * step + " " + label, formatHMS(seconds * i * step / distance)]);
+    }
+    rows.push(["Finish (" + Number(distance.toFixed(6)) + " " + label + ")", formatHMS(seconds)]);
+    return rows;
+  }
+
+  function downloadCsv(csv, name) {
+    var objectUrl = URL.createObjectURL(new Blob([csv], {type: "text/csv;charset=utf-8"}));
+    var link = document.createElement("a");
+    link.href = objectUrl;
+    link.download = name;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    setTimeout(function () { URL.revokeObjectURL(objectUrl); }, 1000);
+  }
+
+  function csvText(rows) {
+    return rows.map(function (row) { return row.join(","); }).join("\r\n") + "\r\n";
+  }
+
+  function bindChart() {
+    if (!$("pace-chart")) return;
+    var goals = Array.from({length: 11}, function (_, i) { return 10800 + i * 900; });
+    var header = ["Checkpoint"].concat(goals.map(formatHMS));
+    ["miles", "km"].forEach(function (unit) {
+      var metric = unit === "km";
+      var km = PRESETS.marathon.km;
+      var columns = goals.map(function (goal) {
+        return checkpoints(metric ? km : km / KM_PER_MILE, metric ? 5 : 1, metric ? "km" : "mi", goal);
+      });
+      var rows = [["Start"].concat(goals.map(function () { return formatHMS(0); }))];
+      columns[0].forEach(function (row, i) {
+        rows.push([row[0]].concat(columns.map(function (column) { return column[i][1]; })));
+      });
+      header.forEach(function (label) {
+        var th = document.createElement("th");
+        th.scope = "col";
+        th.textContent = label;
+        $("chart-head-" + unit).appendChild(th);
+      });
+      rows.forEach(function (row) {
+        var tr = $("chart-body-" + unit).insertRow();
+        row.forEach(function (value, i) {
+          if (i) tr.insertCell().textContent = value;
+          else {
+            var th = document.createElement("th");
+            th.scope = "row";
+            th.textContent = value;
+            tr.appendChild(th);
+          }
+        });
+      });
+      $("chart-csv-" + unit).addEventListener("click", function () {
+        downloadCsv(csvText([header].concat(rows)), "marathon-pace-chart-" + unit + ".csv");
+      });
+    });
+    function showChart() {
+      $("chart-miles").hidden = getUnit() !== "miles";
+      $("chart-km").hidden = getUnit() !== "km";
+    }
+    $("pace-chart").querySelectorAll("[data-unit-btn]").forEach(function (button) {
+      button.addEventListener("click", showChart);
+    });
+    showChart();
+  }
+
   function bindMarathon() {
     var form = $("marathon-form");
     if (!form) return;
@@ -351,14 +421,6 @@
     var csv = "";
     var summary = "";
 
-    function checkpoints(distance, step, label, seconds) {
-      var rows = [];
-      for (var i = 1; i * step < distance - 1e-8; i++) {
-        rows.push([i * step + " " + label, formatHMS(seconds * i * step / distance)]);
-      }
-      rows.push(["Finish (" + Number(distance.toFixed(6)) + " " + label + ")", formatHMS(seconds)]);
-      return rows;
-    }
 
     function renderRows(id, rows) {
       var body = $(id);
@@ -387,10 +449,10 @@
         finish = formatHMS(seconds);
         kmRows = checkpoints(km, 5, "km", seconds);
         mileRows = checkpoints(km / KM_PER_MILE, 1, "mi", seconds);
-        csv = ["checkpoint_set,checkpoint,elapsed_time"].concat(
-          kmRows.map(function (row) { return ["5 km"].concat(row).join(","); }),
-          mileRows.map(function (row) { return ["1 mile"].concat(row).join(","); })
-        ).join("\r\n") + "\r\n";
+        csv = csvText([["checkpoint_set","checkpoint","elapsed_time"]].concat(
+          kmRows.map(function (row) { return ["5 km"].concat(row); }),
+          mileRows.map(function (row) { return ["1 mile"].concat(row); })
+        ));
         summary = "Average pace: " + pace + "\nAverage speed: " + speed + "\nFinish time: " + finish;
       }
       setText("marathon-pace", pace);
@@ -422,16 +484,7 @@
         setText("marathon-status", "Clipboard unavailable. Select the result to copy it manually.");
       }
     });
-    download.addEventListener("click", function () {
-      var objectUrl = URL.createObjectURL(new Blob([csv], {type: "text/csv;charset=utf-8"}));
-      var link = document.createElement("a");
-      link.href = objectUrl;
-      link.download = "marathon-splits.csv";
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-      setTimeout(function () { URL.revokeObjectURL(objectUrl); }, 1000);
-    });
+    download.addEventListener("click", function () { downloadCsv(csv, "marathon-splits.csv"); });
     update();
   }
 
@@ -488,6 +541,7 @@
     });
 
     bindMarathon();
+    bindChart();
 
     // init
     var dist = $("distance");
