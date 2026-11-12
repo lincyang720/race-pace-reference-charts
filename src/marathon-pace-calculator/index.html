@@ -76,8 +76,18 @@
   <h2>Marathon split calculator</h2>
   <p>Each checkpoint shows the cumulative time from the start at a steady pace. The CSV includes both checkpoint sets.</p>
   <div class="grid-2">
-    <div><h3>Every 5 km</h3><table aria-label="Every 5 km"><thead><tr><th scope="col">Checkpoint</th><th scope="col">Elapsed time</th></tr></thead><tbody id="marathon-km-splits"></tbody></table></div>
-    <div><h3>Every mile</h3><table aria-label="Every mile"><thead><tr><th scope="col">Checkpoint</th><th scope="col">Elapsed time</th></tr></thead><tbody id="marathon-mile-splits"></tbody></table></div>
+    <div style="min-width:0">
+      <h3>Every 5 km</h3>
+      <div class="table-wrap">
+        <table style="min-width:18rem" aria-label="Every 5 km"><thead><tr><th scope="col">Checkpoint</th><th scope="col">Elapsed time</th></tr></thead><tbody id="marathon-km-splits"></tbody></table>
+      </div>
+    </div>
+    <div style="min-width:0">
+      <h3>Every mile</h3>
+      <div class="table-wrap">
+        <table style="min-width:18rem" aria-label="Every mile"><thead><tr><th scope="col">Checkpoint</th><th scope="col">Elapsed time</th></tr></thead><tbody id="marathon-mile-splits"></tbody></table>
+      </div>
+    </div>
   </div>
   <h2>Formula and limitations</h2>
   <p><strong>Pace (seconds per kilometer) = goal finish time (total seconds) ÷ race distance (kilometers).</strong></p>
