@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marathon Pace Calculator — Checkpoint Splits | PaceBeacon</title>
+<meta name="description" content="Calculate marathon pace and speed from a goal time, see 5K and mile checkpoints, and download your splits as a CSV.">
+<link rel="canonical" href="https://race-pace-calculator.com/marathon-pace-calculator">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Marathon Pace Calculator — Checkpoint Splits | PaceBeacon">
+<meta property="og:description" content="Calculate marathon pace and speed from a goal time, see 5K and mile checkpoints, and download your splits as a CSV.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://race-pace-calculator.com/marathon-pace-calculator">
+<meta name="theme-color" content="#071018">
+<link rel="stylesheet" href="/css/styles.css">
+</head>
+<body data-page="marathon" data-unit="miles" data-calc-mode="pace" data-bike-mode="speed">
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="logo" href="/"><span class="logo-mark" aria-hidden="true"></span>PaceBeacon</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/">Race Pace</a>
+      <a href="/marathon-pace-calculator/" aria-current="page">Marathon Pace</a>
+      <a href="/treadmill-pace-calculator/">Treadmill</a>
+      <a href="/bike-pace-calculator/">Bike</a>
+      <a href="/run-walk-pace-calculator/">Run/Walk</a>
+      <a href="/how-to-calculate-race-pace/">How-to & Charts</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+
+<section class="hero"><h1>Marathon Pace Calculator</h1></section>
+<section class="panel grid-2" aria-label="Marathon pace calculator">
+  <form id="marathon-form">
+    <div class="seg" role="group" aria-label="Distance units">
+      <button type="button" data-unit-btn="miles" aria-pressed="true">Miles</button>
+      <button type="button" data-unit-btn="km" aria-pressed="false">Kilometers</button>
+    </div>
+    <div class="field">
+      <label for="marathon-distance">Race distance</label>
+      <select id="marathon-distance">
+        <option value="marathon">Marathon</option><option value="half">Half marathon</option>
+        <option value="10k">10K</option><option value="5k">5K</option>
+        <option value="mile">1 mile</option><option value="10mi">10 miles</option>
+        <option value="50k">50K</option><option value="custom">Custom distance</option>
+      </select>
+    </div>
+    <div class="field" id="marathon-custom-field" hidden>
+      <label for="marathon-custom">Custom distance (<span data-unit-label>mi</span>)</label>
+      <input id="marathon-custom" type="number" inputmode="decimal" min="0.001" step="any" value="26.218757">
+    </div>
+    <fieldset style="margin:0;padding:0;border:0;min-width:0">
+      <legend>Goal finish time</legend>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.5rem">
+        <div class="field"><label for="marathon-hours">Hours</label><input id="marathon-hours" type="number" min="0" max="999" value="3" inputmode="numeric" required></div>
+        <div class="field"><label for="marathon-minutes">Minutes</label><input id="marathon-minutes" type="number" min="0" max="59" value="0" inputmode="numeric" required></div>
+        <div class="field"><label for="marathon-seconds">Seconds</label><input id="marathon-seconds" type="number" min="0" max="59" value="0" inputmode="numeric" required></div>
+      </div>
+    </fieldset>
+    <div class="actions"><button class="btn" type="submit">Calculate pace</button></div>
+    <p id="marathon-status" class="note" role="status"></p>
+  </form>
+  <div class="results" aria-live="polite">
+    <h2>Results</h2>
+    <div class="stat"><span>Average pace</span><strong id="marathon-pace">—</strong></div>
+    <div class="stat"><span>Average speed</span><strong id="marathon-speed">—</strong></div>
+    <div class="stat"><span>Finish time</span><strong id="marathon-finish">—</strong></div>
+    <div class="actions">
+      <button class="btn" id="marathon-copy" type="button" disabled>Copy result</button>
+      <button class="btn" id="marathon-csv" type="button" disabled>Download CSV</button>
+    </div>
+  </div>
+</section>
+<section class="content">
+  <h2>Marathon split calculator</h2>
+  <p>Each checkpoint shows the cumulative time from the start at a steady pace. The CSV includes both checkpoint sets.</p>
+  <div class="grid-2">
+    <div><h3>Every 5 km</h3><table aria-label="Every 5 km"><thead><tr><th scope="col">Checkpoint</th><th scope="col">Elapsed time</th></tr></thead><tbody id="marathon-km-splits"></tbody></table></div>
+    <div><h3>Every mile</h3><table aria-label="Every mile"><thead><tr><th scope="col">Checkpoint</th><th scope="col">Elapsed time</th></tr></thead><tbody id="marathon-mile-splits"></tbody></table></div>
+  </div>
+  <h2>Formula and limitations</h2>
+  <p><strong>Pace (seconds per kilometer) = goal finish time (total seconds) ÷ race distance (kilometers).</strong></p>
+  <p>This gives the steady average pace you need to hold to reach your goal.</p>
+  <ul>
+    <li><strong>Grade:</strong> Flat-pace targets can be optimistic on uphills and conservative on runnable downhills.</li>
+    <li><strong>Elevation gain:</strong> Repeated climbs can make the total effort implied by a flat pace too optimistic, even if the course finishes at its starting elevation.</li>
+    <li><strong>Fatigue:</strong> If you slow late in the race, the steady-pace checkpoints can be optimistic.</li>
+    <li><strong>Weather:</strong> Heat or a headwind can make the plan optimistic; a helpful tailwind can make it conservative.</li>
+    <li><strong>Running tangents:</strong> Wide turns or weaving add distance, so the predicted time at the planned pace can be optimistic.</li>
+  </ul>
+  <p>Displayed pace and splits are rounded to the nearest second. Checkpoints use the unrounded pace.</p>
+  <h2>FAQ</h2>
+  <details><summary>How do I use the marathon split calculator?</summary><p>Enter your goal finish time and choose a distance. Read the cumulative times at the 5 km and mile checkpoints or download both sets in one CSV.</p></details>
+  <details><summary>Can I calculate splits for a shorter race?</summary><p>Yes. Choose a distance preset or enter a custom distance. Both tables end at the selected finish distance.</p></details>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <strong style="color:var(--text)">PaceBeacon</strong>
+      <p style="margin:.35rem 0 0">Free race pace tools that run in your browser. No signup.</p>
+    </div>
+    <nav aria-label="Footer">
+      <a href="/">race pace calculator</a>
+      <a href="/marathon-pace-calculator/">marathon pace calculator</a>
+      <a href="/treadmill-pace-calculator/">treadmill pace calculator</a>
+      <a href="/bike-pace-calculator/">bike pace calculator</a>
+      <a href="/run-walk-pace-calculator/">run walk pace calculator</a>
+      <a href="/how-to-calculate-race-pace/">how to calculate race pace</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+  </div>
+</footer>
+<script src="/js/app.js" defer></script>
+</body>
+</html>

@@ -338,6 +338,103 @@
     setText("rw-out-note", "Average pace uses total interval time divided by distance covered.");
   }
 
+
+  function bindMarathon() {
+    var form = $("marathon-form");
+    if (!form) return;
+    var select = $("marathon-distance");
+    var custom = $("marathon-custom");
+    var copy = $("marathon-copy");
+    var download = $("marathon-csv");
+    var timeIds = ["marathon-hours", "marathon-minutes", "marathon-seconds"];
+    var customKm = PRESETS.marathon.km;
+    var csv = "";
+    var summary = "";
+
+    function checkpoints(distance, step, label, seconds) {
+      var rows = [];
+      for (var i = 1; i * step < distance - 1e-8; i++) {
+        rows.push([i * step + " " + label, formatHMS(seconds * i * step / distance)]);
+      }
+      rows.push(["Finish (" + Number(distance.toFixed(6)) + " " + label + ")", formatHMS(seconds)]);
+      return rows;
+    }
+
+    function renderRows(id, rows) {
+      var body = $(id);
+      body.replaceChildren();
+      rows.forEach(function (row) {
+        var tr = body.insertRow();
+        row.forEach(function (value) { tr.insertCell().textContent = value; });
+      });
+    }
+
+    function update() {
+      var metric = getUnit() === "km";
+      var isCustom = select.value === "custom";
+      $("marathon-custom-field").hidden = !isCustom;
+      custom.disabled = !isCustom;
+      var extraDistances = { "10mi": 10 * KM_PER_MILE, "50k": 50 };
+      var km = isCustom ? customKm : (PRESETS[select.value]?.km || extraDistances[select.value]);
+      var seconds = parseHMS.apply(null, timeIds.map(function (id) { return num(id, 0); }));
+      var valid = form.checkValidity() && seconds > 0 && km > 0 && km <= 1000;
+      var pace = "—", speed = "—", finish = "—";
+      var kmRows = [], mileRows = [];
+      if (valid) {
+        var distance = metric ? km : km / KM_PER_MILE;
+        pace = formatPace(seconds / distance) + " /" + unitLabel();
+        speed = (distance * 3600 / seconds).toFixed(2) + (metric ? " km/h" : " mph");
+        finish = formatHMS(seconds);
+        kmRows = checkpoints(km, 5, "km", seconds);
+        mileRows = checkpoints(km / KM_PER_MILE, 1, "mi", seconds);
+        csv = ["checkpoint_set,checkpoint,elapsed_time"].concat(
+          kmRows.map(function (row) { return ["5 km"].concat(row).join(","); }),
+          mileRows.map(function (row) { return ["1 mile"].concat(row).join(","); })
+        ).join("\r\n") + "\r\n";
+        summary = "Average pace: " + pace + "\nAverage speed: " + speed + "\nFinish time: " + finish;
+      }
+      setText("marathon-pace", pace);
+      setText("marathon-speed", speed);
+      setText("marathon-finish", finish);
+      renderRows("marathon-km-splits", kmRows);
+      renderRows("marathon-mile-splits", mileRows);
+      copy.disabled = download.disabled = !valid;
+      setText("marathon-status", valid ? "" : "Enter a positive finish time and a distance up to 1,000 km (621.371 mi).");
+    }
+
+    custom.addEventListener("input", function () {
+      customKm = custom.valueAsNumber * (getUnit() === "km" ? 1 : KM_PER_MILE);
+    });
+    form.addEventListener("input", update);
+    form.addEventListener("submit", function (event) { event.preventDefault(); update(); });
+    document.querySelectorAll("[data-unit-btn]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        var distance = getUnit() === "km" ? customKm : customKm / KM_PER_MILE;
+        custom.value = Number.isFinite(distance) ? String(Number(distance.toFixed(9))) : "";
+        update();
+      });
+    });
+    copy.addEventListener("click", async function () {
+      try {
+        await navigator.clipboard.writeText(summary);
+        setText("marathon-status", "Result copied.");
+      } catch {
+        setText("marathon-status", "Clipboard unavailable. Select the result to copy it manually.");
+      }
+    });
+    download.addEventListener("click", function () {
+      var objectUrl = URL.createObjectURL(new Blob([csv], {type: "text/csv;charset=utf-8"}));
+      var link = document.createElement("a");
+      link.href = objectUrl;
+      link.download = "marathon-splits.csv";
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      setTimeout(function () { URL.revokeObjectURL(objectUrl); }, 1000);
+    });
+    update();
+  }
+
   function bind() {
     document.querySelectorAll("[data-unit-btn]").forEach(function (btn) {
       btn.addEventListener("click", function () { setUnit(btn.getAttribute("data-unit-btn")); calcTreadmill(); calcBike(); calcRunWalk(); });
@@ -389,6 +486,8 @@
       setMode("pace");
       calc();
     });
+
+    bindMarathon();
 
     // init
     var dist = $("distance");
