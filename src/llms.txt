@@ -1,0 +1,11 @@
+# PaceBeacon
+
+> Free pace calculators and reference charts for race planning.
+
+## Core calculators
+
+- [Race Pace Calculator](https://race-pace-calculator.com/): Calculate pace, distance, or finish time.
+- [Marathon Pace Calculator](https://race-pace-calculator.com/marathon-pace-calculator): Calculate target pace and checkpoint splits.
+- [Treadmill Pace Calculator](https://race-pace-calculator.com/treadmill-pace-calculator/): Convert treadmill speed to running pace.
+- [Bike Pace Calculator](https://race-pace-calculator.com/bike-pace-calculator/): Calculate cycling speed, distance, or time.
+- [Run-Walk Pace Calculator](https://race-pace-calculator.com/run-walk-pace-calculator/): Estimate average pace for run-walk intervals.
