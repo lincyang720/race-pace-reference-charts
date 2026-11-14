@@ -30,39 +30,48 @@
   </div>
 </header>
 <main class="wrap">
-<section class="hero"><h1>Marathon Pace Chart Rounding: Why Rounded Pace Misses Your Finish Time</h1><p class="lede">A 4:00:00 marathon has 14,400 seconds. Divide by 42.195 km and you get approximately 341.272663 seconds per kilometer, displayed as 5:41/km. Hold that displayed pace exactly and 341 × 42.195 = 14,388.495 seconds, or 3:59:48 rounded to the nearest second. That is 11.505 seconds early. A checkpoint calculated from the original goal still ends at 4:00:00.</p></section>
+<section class="hero"><h1>Marathon Pace Chart Rounding: Why Rounded Pace Misses Your Finish Time</h1><p class="lede">A 4:00:00 marathon has 14,400 seconds. Divide by 42.195 km and you get approximately 341.272663 seconds per kilometer, displayed as 5:41/km. Hold that displayed pace exactly and 341 × 42.195 = 14,388.495 seconds, or 3:59:48 rounded to the nearest second. That is 11.505 seconds early. Using the unrounded pace, (14,400 ÷ 42.195) × 42.195 = 14,400 seconds, exactly 4:00:00.</p></section>
 <section class="content">
 <h2>How to read the tables</h2><p>Convert each goal to seconds as hours × 3,600 + minutes × 60 + seconds. Divide by the course distance, round the quotient to the nearest whole second, multiply that rounded pace by the course distance, then subtract the goal seconds. Finish clocks are rounded to the nearest second; signed differences use the unrounded finish and are shown to three decimals. A minus sign means early; a plus sign means late.</p>
 <h2>Kilometers · 42.195 km</h2>
 <div class="table-wrap" tabindex="0" role="region" aria-label="Kilometers rounding error"><table style="min-width:50rem"><thead><tr><th scope="col">Goal time</th><th scope="col">Unrounded pace (seconds per unit)</th><th scope="col">Displayed pace</th><th scope="col">Finish at displayed pace</th><th scope="col">Error (seconds)</th></tr></thead><tbody>
-<tr><th scope="row">3:00:00</th><td>10800 ÷ 42.195 ≈ 255.954497</td><td>4:16/km</td><td>256 × 42.195 → 3:00:02</td><td>+1.920</td></tr>
-<tr><th scope="row">3:15:00</th><td>11700 ÷ 42.195 ≈ 277.284038</td><td>4:37/km</td><td>277 × 42.195 → 3:14:48</td><td>−11.985</td></tr>
-<tr><th scope="row">3:30:00</th><td>12600 ÷ 42.195 ≈ 298.613580</td><td>4:59/km</td><td>299 × 42.195 → 3:30:16</td><td>+16.305</td></tr>
-<tr><th scope="row">3:45:00</th><td>13500 ÷ 42.195 ≈ 319.943121</td><td>5:20/km</td><td>320 × 42.195 → 3:45:02</td><td>+2.400</td></tr>
-<tr><th scope="row">4:00:00</th><td>14400 ÷ 42.195 ≈ 341.272663</td><td>5:41/km</td><td>341 × 42.195 → 3:59:48</td><td>−11.505</td></tr>
-<tr><th scope="row">4:15:00</th><td>15300 ÷ 42.195 ≈ 362.602204</td><td>6:03/km</td><td>363 × 42.195 → 4:15:17</td><td>+16.785</td></tr>
-<tr><th scope="row">4:30:00</th><td>16200 ÷ 42.195 ≈ 383.931745</td><td>6:24/km</td><td>384 × 42.195 → 4:30:03</td><td>+2.880</td></tr>
-<tr><th scope="row">4:45:00</th><td>17100 ÷ 42.195 ≈ 405.261287</td><td>6:45/km</td><td>405 × 42.195 → 4:44:49</td><td>−11.025</td></tr>
-<tr><th scope="row">5:00:00</th><td>18000 ÷ 42.195 ≈ 426.590828</td><td>7:07/km</td><td>427 × 42.195 → 5:00:17</td><td>+17.265</td></tr>
-<tr><th scope="row">5:15:00</th><td>18900 ÷ 42.195 ≈ 447.920370</td><td>7:28/km</td><td>448 × 42.195 → 5:15:03</td><td>+3.360</td></tr>
-<tr><th scope="row">5:30:00</th><td>19800 ÷ 42.195 ≈ 469.249911</td><td>7:49/km</td><td>469 × 42.195 → 5:29:49</td><td>−10.545</td></tr>
+<tr><th scope="row">3:00:00</th><td>10800 ÷ 42.195 ≈ 255.954497</td><td>4:16/km</td><td>3:00:02</td><td>+1.920</td></tr>
+<tr><th scope="row">3:15:00</th><td>11700 ÷ 42.195 ≈ 277.284038</td><td>4:37/km</td><td>3:14:48</td><td>−11.985</td></tr>
+<tr><th scope="row">3:30:00</th><td>12600 ÷ 42.195 ≈ 298.613580</td><td>4:59/km</td><td>3:30:16</td><td>+16.305</td></tr>
+<tr><th scope="row">3:45:00</th><td>13500 ÷ 42.195 ≈ 319.943121</td><td>5:20/km</td><td>3:45:02</td><td>+2.400</td></tr>
+<tr><th scope="row">4:00:00</th><td>14400 ÷ 42.195 ≈ 341.272663</td><td>5:41/km</td><td>3:59:48</td><td>−11.505</td></tr>
+<tr><th scope="row">4:15:00</th><td>15300 ÷ 42.195 ≈ 362.602204</td><td>6:03/km</td><td>4:15:17</td><td>+16.785</td></tr>
+<tr><th scope="row">4:30:00</th><td>16200 ÷ 42.195 ≈ 383.931745</td><td>6:24/km</td><td>4:30:03</td><td>+2.880</td></tr>
+<tr><th scope="row">4:45:00</th><td>17100 ÷ 42.195 ≈ 405.261287</td><td>6:45/km</td><td>4:44:49</td><td>−11.025</td></tr>
+<tr><th scope="row">5:00:00</th><td>18000 ÷ 42.195 ≈ 426.590828</td><td>7:07/km</td><td>5:00:17</td><td>+17.265</td></tr>
+<tr><th scope="row">5:15:00</th><td>18900 ÷ 42.195 ≈ 447.920370</td><td>7:28/km</td><td>5:15:03</td><td>+3.360</td></tr>
+<tr><th scope="row">5:30:00</th><td>19800 ÷ 42.195 ≈ 469.249911</td><td>7:49/km</td><td>5:29:49</td><td>−10.545</td></tr>
 </tbody></table></div>
-<h2>Miles · 26.218757 mi</h2>
+<h2>Miles · D = 42.195 ÷ 1.609344 mi</h2>
 <div class="table-wrap" tabindex="0" role="region" aria-label="Miles rounding error"><table style="min-width:50rem"><thead><tr><th scope="col">Goal time</th><th scope="col">Unrounded pace (seconds per unit)</th><th scope="col">Displayed pace</th><th scope="col">Finish at displayed pace</th><th scope="col">Error (seconds)</th></tr></thead><tbody>
-<tr><th scope="row">3:00:00</th><td>10800 ÷ 26.218757 ≈ 411.918841</td><td>6:52/mi</td><td>412 × 26.218757 → 3:00:02</td><td>+2.128</td></tr>
-<tr><th scope="row">3:15:00</th><td>11700 ÷ 26.218757 ≈ 446.245411</td><td>7:26/mi</td><td>446 × 26.218757 → 3:14:54</td><td>−6.434</td></tr>
-<tr><th scope="row">3:30:00</th><td>12600 ÷ 26.218757 ≈ 480.571981</td><td>8:01/mi</td><td>481 × 26.218757 → 3:30:11</td><td>+11.222</td></tr>
-<tr><th scope="row">3:45:00</th><td>13500 ÷ 26.218757 ≈ 514.898551</td><td>8:35/mi</td><td>515 × 26.218757 → 3:45:03</td><td>+2.660</td></tr>
-<tr><th scope="row">4:00:00</th><td>14400 ÷ 26.218757 ≈ 549.225122</td><td>9:09/mi</td><td>549 × 26.218757 → 3:59:54</td><td>−5.902</td></tr>
-<tr><th scope="row">4:15:00</th><td>15300 ÷ 26.218757 ≈ 583.551692</td><td>9:44/mi</td><td>584 × 26.218757 → 4:15:12</td><td>+11.754</td></tr>
-<tr><th scope="row">4:30:00</th><td>16200 ÷ 26.218757 ≈ 617.878262</td><td>10:18/mi</td><td>618 × 26.218757 → 4:30:03</td><td>+3.192</td></tr>
-<tr><th scope="row">4:45:00</th><td>17100 ÷ 26.218757 ≈ 652.204832</td><td>10:52/mi</td><td>652 × 26.218757 → 4:44:55</td><td>−5.370</td></tr>
-<tr><th scope="row">5:00:00</th><td>18000 ÷ 26.218757 ≈ 686.531402</td><td>11:27/mi</td><td>687 × 26.218757 → 5:00:12</td><td>+12.286</td></tr>
-<tr><th scope="row">5:15:00</th><td>18900 ÷ 26.218757 ≈ 720.857972</td><td>12:01/mi</td><td>721 × 26.218757 → 5:15:04</td><td>+3.724</td></tr>
-<tr><th scope="row">5:30:00</th><td>19800 ÷ 26.218757 ≈ 755.184542</td><td>12:35/mi</td><td>755 × 26.218757 → 5:29:55</td><td>−4.838</td></tr>
+<tr><th scope="row">3:00:00</th><td>10800 ÷ D ≈ 411.918834</td><td>6:52/mi</td><td>3:00:02</td><td>+2.128</td></tr>
+<tr><th scope="row">3:15:00</th><td>11700 ÷ D ≈ 446.245403</td><td>7:26/mi</td><td>3:14:54</td><td>−6.434</td></tr>
+<tr><th scope="row">3:30:00</th><td>12600 ÷ D ≈ 480.571973</td><td>8:01/mi</td><td>3:30:11</td><td>+11.222</td></tr>
+<tr><th scope="row">3:45:00</th><td>13500 ÷ D ≈ 514.898542</td><td>8:35/mi</td><td>3:45:03</td><td>+2.660</td></tr>
+<tr><th scope="row">4:00:00</th><td>14400 ÷ D ≈ 549.225112</td><td>9:09/mi</td><td>3:59:54</td><td>−5.902</td></tr>
+<tr><th scope="row">4:15:00</th><td>15300 ÷ D ≈ 583.551681</td><td>9:44/mi</td><td>4:15:12</td><td>+11.754</td></tr>
+<tr><th scope="row">4:30:00</th><td>16200 ÷ D ≈ 617.878251</td><td>10:18/mi</td><td>4:30:03</td><td>+3.192</td></tr>
+<tr><th scope="row">4:45:00</th><td>17100 ÷ D ≈ 652.204820</td><td>10:52/mi</td><td>4:44:55</td><td>−5.370</td></tr>
+<tr><th scope="row">5:00:00</th><td>18000 ÷ D ≈ 686.531390</td><td>11:27/mi</td><td>5:00:12</td><td>+12.286</td></tr>
+<tr><th scope="row">5:15:00</th><td>18900 ÷ D ≈ 720.857959</td><td>12:01/mi</td><td>5:15:04</td><td>+3.724</td></tr>
+<tr><th scope="row">5:30:00</th><td>19800 ÷ D ≈ 755.184529</td><td>12:35/mi</td><td>5:29:55</td><td>−4.838</td></tr>
 </tbody></table></div>
-<h2>Why the mile table differs</h2><p>The finish error is (displayed seconds per unit − exact seconds per unit) × course distance. The per-unit rounding error is at most half a second, so the theoretical bounds are 0.5 × 42.195 = 21.0975 seconds and 0.5 × 26.218757 = 13.1093785 seconds. For a 4:00:00 goal, 14,400 ÷ 26.218757 rounds to 549 seconds per mile, so 549 × 26.218757 − 14,400 = −5.902407 seconds.</p>
-<h2>What to watch on race day</h2><p>Use the cumulative clock at course markers. For a 4:00:00 goal, the 30 km target is 14,400 × 30 ÷ 42.195 ≈ 10,238.18 seconds, or 2:50:38. The rounded 5:41/km would put you there at 341 × 30 = 10,230 seconds, or 2:50:30. If your table row is positive and you choose to plan from the rounded pace, budget that many seconds earlier over the whole race. If it is negative, that displayed pace already puts you ahead under the same distance assumption.</p>
+<h2>Why the mile table differs</h2>
+<p>Finish error equals (displayed seconds per unit − exact seconds per unit) × course distance. At four hours, 5:41/km finishes 11.505 seconds early, while 9:09/mi finishes 5.902 seconds early. The maximum rounding drift is half a second per unit, or about 21.10 seconds in kilometers and 13.11 seconds in miles.</p>
+<h2>4-hour checkpoint comparison</h2>
+<p>Multiply 14,400 seconds by the fraction of the course completed. For a mile marker, multiply its mileage by 1.609344 before dividing by 42.195. Round the checkpoint clock once, at the end.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Four-hour checkpoint comparison"><table><thead><tr><th scope="col">Marker</th><th scope="col">Goal clock</th><th scope="col">At displayed pace</th></tr></thead><tbody>
+<tr><th scope="row">10 km</th><td>0:56:53</td><td>0:56:50</td></tr>
+<tr><th scope="row">Halfway</th><td>2:00:00</td><td>1:59:54</td></tr>
+<tr><th scope="row">30 km</th><td>2:50:38</td><td>2:50:30</td></tr>
+<tr><th scope="row">20 mi</th><td>3:03:05</td><td>3:03:00</td></tr>
+<tr><th scope="row">25 mi</th><td>3:48:51</td><td>3:48:45</td></tr>
+</tbody></table></div>
 <p>Use the <a href="/marathon-pace-chart/">marathon pace chart</a> to look up cumulative splits or the <a href="/marathon-pace-calculator/">marathon pace calculator</a> for a custom goal.</p>
 <h2>FAQ</h2>
 <details><summary>Why is my marathon pace chart off by a few seconds?</summary><p>The displayed pace has been rounded to whole seconds. Multiplying it across the course carries that rounding difference into the finish time.</p></details>
