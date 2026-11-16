@@ -42,6 +42,19 @@ const fs = require('node:fs');
  }
  assert.deepEqual(errors,[],'JS errors');
  const robots=fs.readFileSync('src/robots.txt','utf8');assert.match(robots,/Sitemap: https:\/\/race-pace-calculator.com\/sitemap.xml/);
- const sitemap=fs.readFileSync('src/sitemap.xml','utf8');assert.equal((sitemap.match(/<loc>/g)||[]).length,7);
- await browser.close();console.log('PASS four calculators, 7 pages, mobile 390px, desktop 1280px, robots and sitemap');
+ const sitemap = fs.readFileSync('src/sitemap.xml', 'utf8');
+ const sitemapUrls = [...sitemap.matchAll(/<loc>\s*([^<]+?)\s*<\/loc>/g)].map(match => match[1]);
+ const uniqueUrls = new Set(sitemapUrls);
+ assert.equal(uniqueUrls.size, sitemapUrls.length, 'Duplicate sitemap URLs');
+ const requiredPaths = [
+  '/', '/treadmill-pace-calculator/', '/bike-pace-calculator/',
+  '/run-walk-pace-calculator/', '/how-to-calculate-race-pace/', '/privacy/',
+  '/contact/', '/marathon-pace-calculator', '/marathon-pace-chart/',
+  '/marathon-pace-chart-rounding/', '/marathon-aid-station-pace-chart/',
+ ];
+ for (const path of requiredPaths) {
+  assert.ok(uniqueUrls.has('https://race-pace-calculator.com' + path), 'Missing sitemap URL: ' + path);
+ }
+ await browser.close();
+ console.log('PASS four calculators, 7 browser-tested pages, mobile 390px, desktop 1280px, robots and sitemap');
 })().catch(e=>{console.error(e);process.exit(1)});
