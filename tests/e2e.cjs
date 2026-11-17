@@ -38,6 +38,9 @@ const fs = require('node:fs');
   await page.locator('[data-unit-btn=km]').click();
   assert.match(await page.locator('#rw-out-pace').textContent(),/\/km/);
   for (const [path,title] of [['/how-to-calculate-race-pace/','How to Calculate Race Pace'],['/privacy/','Privacy'],['/contact/','Contact']]) {await visit(path,title);}
+  await visit('/marathon-watch-pace-vs-course-pace/','Marathon Watch Pace vs. Course Pace');
+  assert.match(await page.locator('.lede').textContent(),/5:33\.33/);
+  assert.ok(await page.locator('.lede').evaluate(el => el.getBoundingClientRect().bottom <= innerHeight), 'Answer should fit in the first viewport');
   await page.close();
  }
  assert.deepEqual(errors,[],'JS errors');
