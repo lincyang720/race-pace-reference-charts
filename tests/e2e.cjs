@@ -41,6 +41,8 @@ const fs = require('node:fs');
   await visit('/marathon-watch-pace-vs-course-pace/','Marathon Watch Pace vs. Course Pace');
   assert.match(await page.locator('.lede').textContent(),/5:33\.33/);
   assert.ok(await page.locator('.lede').evaluate(el => el.getBoundingClientRect().bottom <= innerHeight), 'Answer should fit in the first viewport');
+  await visit('/marathon-pace-chart-start-delay/','Marathon Pace Chart With a Start Delay');
+  assert.ok(await page.locator('.lede').evaluate(el => el.getBoundingClientRect().bottom <= innerHeight), 'Start-delay answer fits first viewport');
   await page.close();
  }
  assert.deepEqual(errors,[],'JS errors');
