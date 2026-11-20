@@ -45,6 +45,8 @@ const fs = require('node:fs');
   assert.ok(await page.locator('.lede').evaluate(el => el.getBoundingClientRect().bottom <= innerHeight), 'Start-delay answer fits first viewport');
   await visit('/marathon-elapsed-vs-moving-time/','Marathon Elapsed vs. Moving Time');
   assert.ok(await page.locator('.lede').evaluate(el => el.getBoundingClientRect().bottom <= innerHeight), 'Elapsed-time answer fits first viewport');
+  await visit('/marathon-missed-lap-marker/','Missed a Marathon Lap Marker? Calculate Your Split');
+  assert.ok(await page.locator('.lede').evaluate(el => el.getBoundingClientRect().bottom <= innerHeight), 'Missed-marker answer fits first viewport');
   await page.close();
  }
  assert.deepEqual(errors,[],'JS errors');
