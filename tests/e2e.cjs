@@ -49,6 +49,8 @@ const fs = require('node:fs');
   assert.ok(await page.locator('.lede').evaluate(el => el.getBoundingClientRect().bottom <= innerHeight), 'Missed-marker answer fits first viewport');
   await visit('/marathon-final-2195-meters/','Marathon Final 2.195 km Pace Chart');
   assert.ok(await page.locator('.lede').evaluate(el => el.getBoundingClientRect().bottom <= innerHeight), 'Final-distance answer fits first viewport');
+  await visit('/marathon-pace-change-time-saved/','Marathon Pace Change: How Much Time Will You Save?');
+  assert.ok(await page.locator('.lede').evaluate(el => el.getBoundingClientRect().bottom <= innerHeight), 'Pace-change answer fits first viewport');
   await page.close();
  }
  assert.deepEqual(errors,[],'JS errors');
