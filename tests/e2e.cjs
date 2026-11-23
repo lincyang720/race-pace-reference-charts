@@ -51,6 +51,8 @@ const fs = require('node:fs');
   assert.ok(await page.locator('.lede').evaluate(el => el.getBoundingClientRect().bottom <= innerHeight), 'Final-distance answer fits first viewport');
   await visit('/marathon-pace-change-time-saved/','Marathon Pace Change: How Much Time Will You Save?');
   assert.ok(await page.locator('.lede').evaluate(el => el.getBoundingClientRect().bottom <= innerHeight), 'Pace-change answer fits first viewport');
+  await visit('/marathon-average-pace-from-segments/','Marathon Average Pace From Unequal Segments');
+  assert.ok(await page.locator('.lede').evaluate(el => el.getBoundingClientRect().bottom <= innerHeight), 'Segment answer fits first viewport');
   await page.close();
  }
  assert.deepEqual(errors,[],'JS errors');
