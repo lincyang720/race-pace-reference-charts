@@ -53,6 +53,8 @@ const fs = require('node:fs');
   assert.ok(await page.locator('.lede').evaluate(el => el.getBoundingClientRect().bottom <= innerHeight), 'Pace-change answer fits first viewport');
   await visit('/marathon-average-pace-from-segments/','Marathon Average Pace From Unequal Segments');
   assert.ok(await page.locator('.lede').evaluate(el => el.getBoundingClientRect().bottom <= innerHeight), 'Segment answer fits first viewport');
+  await visit('/marathon-slow-first-5k/','Marathon Pace After a Slow First 5K');
+  assert.ok(await page.locator('.lede').evaluate(el => el.getBoundingClientRect().bottom <= innerHeight), 'First-5K answer fits first viewport');
   await page.close();
  }
  assert.deepEqual(errors,[],'JS errors');
