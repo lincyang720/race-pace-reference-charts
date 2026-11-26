@@ -57,6 +57,8 @@ const fs = require('node:fs');
   assert.ok(await page.locator('.lede').evaluate(el => el.getBoundingClientRect().bottom <= innerHeight), 'First-5K answer fits first viewport');
   await visit('/marathon-26-2-mile-pace-error/','Marathon Pace: The 26.2-Mile Distance Error');
   assert.ok(await page.locator('.lede').evaluate(el => el.getBoundingClientRect().bottom <= innerHeight), 'Distance-error answer fits first viewport');
+  await visit('/marathon-cumulative-vs-segment-splits/','Marathon Cumulative vs. Segment Splits');
+  assert.ok(await page.locator('.lede').evaluate(el => el.getBoundingClientRect().bottom <= innerHeight), 'Cumulative answer fits first viewport');
   await page.close();
  }
  assert.deepEqual(errors,[],'JS errors');
