@@ -1,0 +1,331 @@
+{
+  "retrieved": "2026-11-27",
+  "scope": "Ten pages per specified host. Runna goal pages replace language duplicates. Full prose was read during inspection; retained evidence contains status, byte count, hash, title and first three headings.",
+  "records": [
+    {
+      "url": "https://runhive.com/tools/pace-chart/marathon",
+      "status": 200,
+      "bytes": 442809,
+      "sha256": "23b0c5fdc2732d47bf6648968f5d68164ee10b01de25d60f3ca8132fc8dbb025",
+      "title": "Marathon Pace Chart",
+      "headings": [
+        "Marathon Pace Chart"
+      ]
+    },
+    {
+      "url": "https://runhive.com/tools/marathon-time-predictor",
+      "status": 200,
+      "bytes": 53459,
+      "sha256": "0ea06b6a58a96c86b49f869c13075d337f5428be1c6f8956b795bcb8aace6ed3",
+      "title": "Marathon Time Predictor",
+      "headings": [
+        "How does it work?"
+      ]
+    },
+    {
+      "url": "https://runhive.com/tools/marathon-heat-calculator",
+      "status": 200,
+      "bytes": 43885,
+      "sha256": "bb3acf05de0b848af7fce775de8d2f6b82416372d78e63d32f304adbd9b7249f",
+      "title": "Marathon Heat Calculator",
+      "headings": [
+        "How does it work?",
+        "Limitations"
+      ]
+    },
+    {
+      "url": "https://runhive.com/tools/pace-calculator?calc=pace&race=marathon",
+      "status": 200,
+      "bytes": 52736,
+      "sha256": "a6acaf81d4fabb04e052047cd75867743100eb464e778f20ab233466f8c549a3",
+      "title": "Running Pace Calculator & Pace Charts",
+      "headings": [
+        "Running Pace Calculator",
+        "Pace Calculator Inputs",
+        "Running Pace Charts"
+      ]
+    },
+    {
+      "url": "https://runhive.com/tools/pace-chart/marathon/sub-2-hour",
+      "status": 200,
+      "bytes": 43402,
+      "sha256": "f691bf09d7a36bcd4731dc0df755a249c8d042ebc94bcf91c63924a0c8d774a7",
+      "title": "Sub-2-Hour Marathon Pace Chart",
+      "headings": [
+        "Sub-2-Hour Marathon Pace Chart"
+      ]
+    },
+    {
+      "url": "https://runhive.com/tools/pace-chart/marathon/sub-205",
+      "status": 200,
+      "bytes": 43403,
+      "sha256": "3975564133332fc57c643865aa2b4757db4b49529665d9f4e5afc90dc1b8a841",
+      "title": "Sub-2:05 Marathon Pace Chart",
+      "headings": [
+        "Sub-2:05 Marathon Pace Chart"
+      ]
+    },
+    {
+      "url": "https://runhive.com/tools/pace-chart/marathon/sub-210",
+      "status": 200,
+      "bytes": 43406,
+      "sha256": "3a29b0d41d2326e7715caee848d5a17a4ec66f82d8bddaf2ab5951386726cb4c",
+      "title": "Sub-2:10 Marathon Pace Chart",
+      "headings": [
+        "Sub-2:10 Marathon Pace Chart"
+      ]
+    },
+    {
+      "url": "https://runhive.com/tools/pace-chart/marathon/sub-215",
+      "status": 200,
+      "bytes": 43411,
+      "sha256": "df95ce1688225d53ab196defaffdd4d7f5f35c0e0e224ed0e5e5a9a7ffbb2262",
+      "title": "Sub-2:15 Marathon Pace Chart",
+      "headings": [
+        "Sub-2:15 Marathon Pace Chart"
+      ]
+    },
+    {
+      "url": "https://runhive.com/tools/pace-chart/marathon/sub-220",
+      "status": 200,
+      "bytes": 43411,
+      "sha256": "4248b017af2718fe9d99971b879c87cc223142c1f4b7eddc7bc57df51b5a6928",
+      "title": "Sub-2:20 Marathon Pace Chart",
+      "headings": [
+        "Sub-2:20 Marathon Pace Chart"
+      ]
+    },
+    {
+      "url": "https://runhive.com/tools/pace-chart/marathon/sub-225",
+      "status": 200,
+      "bytes": 43416,
+      "sha256": "6a21c32e8bab97751505938d3be02be00ae83ca8d6c20796bcb514f984426891",
+      "title": "Sub-2:25 Marathon Pace Chart",
+      "headings": [
+        "Sub-2:25 Marathon Pace Chart"
+      ]
+    },
+    {
+      "url": "https://www.runna.com/pace-charts/marathon",
+      "status": 200,
+      "bytes": 219302,
+      "sha256": "db948ee73f40306a0820b951bde3e50ea53b73002982592fba3a5f0043bf4acc",
+      "title": "Marathon Pace Chart | Runna",
+      "headings": [
+        "Marathon Pace Chart",
+        "Take your running to the next\u00a0level"
+      ]
+    },
+    {
+      "url": "https://marathonpacechart.run/",
+      "status": 200,
+      "bytes": 260865,
+      "sha256": "d0745b3c75a9c084c9b2b3d1cebdb32f931cb3c7e3ef1796df9bc014d8607c9a",
+      "title": "Marathon Pace Chart \u2013 Find Your Ideal Marathon Pace",
+      "headings": [
+        "Marathon Pace Chart",
+        "Why Use Our Marathon Pace Chart?",
+        "Accurate Split Times"
+      ]
+    },
+    {
+      "url": "https://marathonpacechart.run/half-marathon-pace-chart",
+      "status": 200,
+      "bytes": 192504,
+      "sha256": "feea9f8fb598e3a438d6fe6cf913711693f83f5e2ba3f5e2c2c72447187c2d11",
+      "title": "Half Marathon Pace Chart \u2013 Find Your Half Marathon Pace",
+      "headings": [
+        "Half Marathon Pace Chart",
+        "Why Use Our Half Marathon Pace Chart?",
+        "Accurate Split Times"
+      ]
+    },
+    {
+      "url": "https://marathonpacechart.run/calculators",
+      "status": 200,
+      "bytes": 132435,
+      "sha256": "663d20bda336aab7a4c6dbbe74710d1d3f4cf22f7662191b84f04861038138ec",
+      "title": "Marathon Calculator | Pace, Split & Distance Tools",
+      "headings": [
+        "Marathon Calculator Tools",
+        "Full Marathon",
+        "Pace Calculator"
+      ]
+    },
+    {
+      "url": "https://marathonpacechart.run/blog",
+      "status": 200,
+      "bytes": 111671,
+      "sha256": "fef82494ad279b888c41ddb508ec58d589dfcfb3b866031d61e535032ee3d097",
+      "title": "Marathon Training Blog - Tips, Guides & Pace Strategies",
+      "headings": []
+    },
+    {
+      "url": "https://marathonpacechart.run/your-marathon-pace-chart",
+      "status": 200,
+      "bytes": 210315,
+      "sha256": "39dceb2268b3aed13187b4929ac1f40e14482436a9ce6b44f9f79f54aa70128b",
+      "title": "Your Marathon Pace Chart \u2013 Custom Marathon Pace Chart",
+      "headings": [
+        "Your Marathon Pace Chart",
+        "Marathon Pace Chart",
+        "How to Use Our Your Marathon Pace Chart?"
+      ]
+    },
+    {
+      "url": "https://marathonpacechart.run/your-half-marathon-pace-chart",
+      "status": 200,
+      "bytes": 214094,
+      "sha256": "45fe79aa49eee7d00c70ee69f07cc9b1a537746e25d29af1dc78adb8bb20cdbb",
+      "title": "Your Half Marathon Pace Chart \u2013 Custom Pace Chart",
+      "headings": [
+        "Your Half Marathon Pace Chart",
+        "How to Use Our Half Marathon Pace Chart ?",
+        "Your Half Marathon Pace Chart: Success Stories"
+      ]
+    },
+    {
+      "url": "https://marathonpacechart.run/calculators/marathon-split-calculator",
+      "status": 200,
+      "bytes": 128057,
+      "sha256": "192465856c52eea21efe8cc4e5c695059ee462e404f2d79397282104801c85b7",
+      "title": "Marathon Pace Calculator | Plan Your Race Strategy",
+      "headings": [
+        "Marathon Split Calculator",
+        "Race Split Calculator",
+        "Understanding Marathon Split Times"
+      ]
+    },
+    {
+      "url": "https://marathonpacechart.run/calculators/half-marathon-pace-calculator",
+      "status": 200,
+      "bytes": 121832,
+      "sha256": "a0fb39525edbbd65412663e6e74afe2e9c5aff495d95fc96aa09b3036f70fdc9",
+      "title": "Half Marathon Pace Calculator | Marathon Pace Chart",
+      "headings": [
+        "Half Marathon Pace Calculator",
+        "Enter Your Target Time",
+        "How to Use the Half Marathon Pace Calculator"
+      ]
+    },
+    {
+      "url": "https://marathonpacechart.run/calculators/finish-time-predictor",
+      "status": 200,
+      "bytes": 123386,
+      "sha256": "84a318656471ad7527d3086eb0923a1b5a24ca9dc2bcebac0920c8bbc32761ef",
+      "title": "Marathon Finish Time Predictor | Calculate Your Race Time",
+      "headings": [
+        "Race Finish Time Predictor",
+        "Calculate Your Finish Time",
+        "How to use :"
+      ]
+    },
+    {
+      "url": "https://marathonpacechart.run/blog/p/our-running-journey-inspiration-and-perseverance-with-the-beijing-marathon-association",
+      "status": 200,
+      "bytes": 93374,
+      "sha256": "46bc6edb96d3221e2a52b152b90f1baae2843cb2ff264a86c0a0963f264e8f9f",
+      "title": "404 - Page Not Found | Marathon Pace Chart",
+      "headings": []
+    },
+    {
+      "url": "https://www.runna.com/pace-charts/marathon/3-00",
+      "status": 200,
+      "bytes": 97030,
+      "sha256": "4f8b437cbde48ed53257078cd4f2a9ea786f181148bd8d53fbef75c1eacbee6e",
+      "title": "3:00 Marathon Pace Chart | Runna",
+      "headings": [
+        "3:00 Marathon Pace Chart",
+        "Take your running to the next\u00a0level"
+      ]
+    },
+    {
+      "url": "https://www.runna.com/pace-charts/marathon/3-15",
+      "status": 200,
+      "bytes": 97026,
+      "sha256": "7bea012d0655218ccc7e18e145f15a65486bc5786c599f51397a6deedfaa6ff1",
+      "title": "3:15 Marathon Pace Chart | Runna",
+      "headings": [
+        "3:15 Marathon Pace Chart",
+        "Take your running to the next\u00a0level"
+      ]
+    },
+    {
+      "url": "https://www.runna.com/pace-charts/marathon/3-30",
+      "status": 200,
+      "bytes": 97036,
+      "sha256": "1a5e83d9034188e708d67c9cf974ce98a2e7ea1407f3318066d1f56a6fc90f9b",
+      "title": "3:30 Marathon Pace Chart | Runna",
+      "headings": [
+        "3:30 Marathon Pace Chart",
+        "Take your running to the next\u00a0level"
+      ]
+    },
+    {
+      "url": "https://www.runna.com/pace-charts/marathon/3-45",
+      "status": 200,
+      "bytes": 97025,
+      "sha256": "d120d743c58637abbe221205e053cbc98419bc0584b76f3321c0fbb35ab252be",
+      "title": "3:45 Marathon Pace Chart | Runna",
+      "headings": [
+        "3:45 Marathon Pace Chart",
+        "Take your running to the next\u00a0level"
+      ]
+    },
+    {
+      "url": "https://www.runna.com/pace-charts/marathon/4-00",
+      "status": 200,
+      "bytes": 97031,
+      "sha256": "929da198e1d7b3718aa24ece95fa6e5ae2d9cd1bf6b3487855e808dd9e8e7cda",
+      "title": "4:00 Marathon Pace Chart | Runna",
+      "headings": [
+        "4:00 Marathon Pace Chart",
+        "Take your running to the next\u00a0level"
+      ]
+    },
+    {
+      "url": "https://www.runna.com/pace-charts/marathon/4-15",
+      "status": 200,
+      "bytes": 97022,
+      "sha256": "5f0380b6b67b2eaaffb72298c38bd097d838e064bd4b08dbc58ffbe0f00987ae",
+      "title": "4:15 Marathon Pace Chart | Runna",
+      "headings": [
+        "4:15 Marathon Pace Chart",
+        "Take your running to the next\u00a0level"
+      ]
+    },
+    {
+      "url": "https://www.runna.com/pace-charts/marathon/4-30",
+      "status": 200,
+      "bytes": 97036,
+      "sha256": "ef3b40571a7eca1edb9377caa9c308e237358b0e6ab1652b1299fbe37e108497",
+      "title": "4:30 Marathon Pace Chart | Runna",
+      "headings": [
+        "4:30 Marathon Pace Chart",
+        "Take your running to the next\u00a0level"
+      ]
+    },
+    {
+      "url": "https://www.runna.com/pace-charts/marathon/4-45",
+      "status": 200,
+      "bytes": 96842,
+      "sha256": "47c64539f5c808a992956e4fd4883e5b6d94c769fb74aeeecd30b16ec15ce8c2",
+      "title": "4:45 Marathon Pace Chart | Runna",
+      "headings": [
+        "4:45 Marathon Pace Chart",
+        "Take your running to the next\u00a0level"
+      ]
+    },
+    {
+      "url": "https://www.runna.com/pace-charts/marathon/5-00",
+      "status": 200,
+      "bytes": 97038,
+      "sha256": "9a54d237c5dd43b44e6ec9824f08adf38afec26cf96230e4f59516ea9bc996f7",
+      "title": "5:00 Marathon Pace Chart | Runna",
+      "headings": [
+        "5:00 Marathon Pace Chart",
+        "Take your running to the next\u00a0level"
+      ]
+    }
+  ]
+}

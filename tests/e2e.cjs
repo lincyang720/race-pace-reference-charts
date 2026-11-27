@@ -59,6 +59,11 @@ const fs = require('node:fs');
   assert.ok(await page.locator('.lede').evaluate(el => el.getBoundingClientRect().bottom <= innerHeight), 'Distance-error answer fits first viewport');
   await visit('/marathon-cumulative-vs-segment-splits/','Marathon Cumulative vs. Segment Splits');
   assert.ok(await page.locator('.lede').evaluate(el => el.getBoundingClientRect().bottom <= innerHeight), 'Cumulative answer fits first viewport');
+  await visit('/marathon-20k-vs-halfway/','Marathon 20K vs. Halfway: Pace Chart Comparison');
+  assert.ok(await page.locator('.lede').evaluate(el => el.getBoundingClientRect().bottom <= innerHeight), 'Halfway answer fits first viewport');
+  for (const img of await page.locator('main img').all()) {
+   assert.ok(await img.evaluate(el => el.complete && el.naturalWidth > 0), 'Calculation image loads');
+  }
   await page.close();
  }
  assert.deepEqual(errors,[],'JS errors');
